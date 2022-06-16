@@ -1,16 +1,21 @@
 import AppController from "../controllers/AppController";
-import UsersController from '../controllers/''
+import UsersController from '../controllers/'
 
 
-const express = require("express");
+const express = require('express');
 
-const route = express.Router();
+const router = express.Router();
 
-route.get('/status', AppController.getStatus);
-route.get('/stats', AppController.getStats);
-route.get('/',(_, res) => {
-  res.send('Home Page'); });
+router.get('/status', AppController.getStatus);
+router.get('/stats', AppController.getStats);
+router.get('/',(_, res) => {
+  res.send('Home Page');
+ });
+router.post('/users', UsersController.postNew);
+route.get('/users/me', UsersController.getMe);
 
-  route.post('/users', UsersController.postNew);
-  route.get('/users/me', UsersController.getMe);
-})
+router.get('/connect', AuthController.getConnect);
+router.get('/disconnect', AuthController.getDisconnect);
+
+export default router
+

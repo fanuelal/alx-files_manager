@@ -1,12 +1,14 @@
-import route from './routes/index.js';
+import route from './routes/index';
+
 const express = require('express');
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.get('./routes/index.js', (req, res) =>{
-    res.send()
-})
+app.use(express.json());
+app.listen(PORT, () => {
+  console.log(`app listening on port : ${PORT}`);
+});
+app.use('/', route);
 
-app.listen(PORT,() => {
-    console.log(`app listening on port : ${PORT}`);
-})
+module.exports = app;
